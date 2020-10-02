@@ -1,0 +1,48 @@
+﻿@page
+@model AFCHIntranet.Pages.Staff.DownloadModel
+@{
+    var error = ViewData["Error"];
+}
+
+<fieldset class="layui-elem-field layui-field-box">
+    <legend>下载 员工资料</legend>
+
+    <div class=" layui-inline">
+        <label class="layui-form-label">下载Excel</label>
+        <a class="layui-btn layui-btn-primary layui-btn-sm" asp-page-handler="ExcelWorking">在职人员</a>
+    </div>
+
+</fieldset>
+
+@*系统管理员上传Excel数据*@
+@if (User.IsInRole(LoginUserRole.Administrator))
+{
+
+    <fieldset class="layui-elem-field layui-field-box">
+        <legend>上传 员工资料</legend>
+
+        <p>非系统管理员勿用</p>
+        <form enctype="multipart/form-data" method="post" asp-page-handler="UploadExcel">
+            @*<div class=" layui-inline">
+                    <label class="layui-form-label"></label>
+                    <a class="layui-btn layui-btn-primary layui-btn-sm" asp-page-handler="ExcelTemplet">下载Excel模板</a>
+                </div>*@
+            <div class=" layui-inline">
+                <label class="layui-form-label">上传Excel</label>
+                <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="uploadExcel" />
+            </div>
+            <div>
+                <input type="submit" class="layui-btn layui-btn-primary" value="提交" />
+            </div>
+        </form>
+    </fieldset>
+}
+
+
+@if (error != null)
+{
+    <script>
+
+            alert('@Html.Raw(error)');
+    </script>
+}

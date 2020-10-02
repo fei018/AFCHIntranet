@@ -1,0 +1,65 @@
+﻿@page
+@model AFCHIntranet.Pages.Elder.ToContractModel
+@{
+    var eId = Model.Elder.Id;
+    var retPage = ViewData["ReturnPage"];
+}
+
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>转入正式入住</legend>
+</fieldset>
+
+<div asp-validation-summary="All" class="layui-bg-red"></div>
+
+<form class="layui-form" method="post" onsubmit="SubmitLoading()">
+
+    <input type="hidden" asp-for="Elder.Id" />
+
+    <div class="layui-form-item">
+        <label class="layui-form-label" asp-for="Elder.ContractStartDate"></label>
+        <div class="layui-input-inline">
+            <input type="text" asp-for="Elder.ContractStartDate" readonly class="layui-input" lay-verify="required" lay-reqtext="合约开始日期" id="date1">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" asp-for="Elder.ContractTerm"></label>
+        <div class="layui-input-inline">
+            <input type="text" asp-for="Elder.ContractTerm" class="layui-input" lay-verify="required|number" lay-reqtext="合约期限填数字,一年填 1, 二年填 2 ">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label" asp-for="Elder.PettyCash"></label>
+        <div class="layui-input-inline">
+            <input type="text" asp-for="Elder.PettyCash" class="layui-input" lay-verify="required" lay-reqtext="备用金, 中文填写">
+        </div>
+    </div>
+
+    <!--提交按钮-->
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button type="submit" class="layui-btn" lay-submit="">保存</button>
+        </div>
+    </div>
+</form>
+
+<!--返回-->
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        <a class="layui-btn layui-btn-sm" href="/Elder/Details?id=@eId&returnPage=@retPage" >返回</a>
+    </div>
+</div>
+
+<!-- submit loading-->
+<div class="submit_loading" style="display:none">
+    <div class="loading_show">
+        <img src="~/intranet/images/loading.gif" />
+        <p class="loading_context">正在提交，请稍后。。。</p>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        Page_Elder_ToContract();
+    </script>
+}

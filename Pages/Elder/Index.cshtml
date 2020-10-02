@@ -1,0 +1,53 @@
+﻿@page
+@model AFCHIntranet.Pages.Elder.IndexModel
+@{
+}
+
+<!--显示 体验 或 正式-->
+<div class="layui-form-item">
+    <label class="layui-form-label">分类显示</label>
+    <div class="layui-input-block">
+        <div class="layui-btn-group">
+            <button class="layui-btn layui-btn-sm" onclick="Elder_LiveAtListJson('Index')">所有入住</button>
+            <button class="layui-btn layui-btn-sm" onclick="Elder_ExperienceListJson('Index')">体验入住</button>
+            <button class="layui-btn layui-btn-sm" onclick="Elder_ContractListJson('Index')">正式入住</button>
+        </div>
+    </div>
+    <div class="layui-input-block">
+        <div class="layui-btn-group">
+            <button class="layui-btn layui-btn-sm" onclick="Elder_ExperienceListJson_Expire('Index')">体验到期</button>
+            <button class="layui-btn layui-btn-sm" onclick="Elder_ContractListJson_Expire('Index')">正式到期</button>
+        </div>
+    </div>
+</div>
+
+<!--姓名搜索-->
+<div class="layui-form-item">
+    <label class="layui-form-label">姓名</label>
+    <div class="layui-input-inline">
+        <input type="text" class="layui-input" id="nameInput" name="elderName" />
+    </div>
+    <div class="layui-inline input-in-btn">
+        <button class="layui-btn layui-btn-primary" onclick="Elder_SearchNameListJson('Index')"><i class="layui-icon layui-icon-search"></i></button>
+    </div>
+</div>
+
+<div asp-validation-summary="All" class="layui-bg-red"></div>
+
+<!-- layui_table1 -->
+<div class="layui-row">
+    <table class="layui-hide" id="table1" lay-filter="table1"></table>
+</div>
+
+@section Scripts{
+    <!--表格行操作模板-->
+    <script type="text/html" id="caoZuoTpl">
+        <a class="layui-btn layui-btn-xs" href="/Elder/Details?id={{d.id}}&returnPage=Index">详细</a>
+    </script>
+
+    <!--layui table-->
+    <script>
+        Page_Elder_Index();
+    </script>
+
+} <!--Scripts section 结尾-->

@@ -1,0 +1,201 @@
+﻿@page
+@model AFCHIntranet.Pages.Elder.DetailsModel
+@{
+    var retPage = ViewData["ReturnPage"];
+    var eId = Model.Elder.Id;
+}
+
+<!--老人资料-->
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>老人资料</legend>
+</fieldset>
+
+<div asp-validation-summary="All" class="layui-bg-red"></div>
+
+<table class="layui-table" lay-even>
+    <colgroup>
+        <col width="100">
+        <col width="200">
+    </colgroup>
+    <tbody>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.Name)</td>
+            <td>@Model.Elder.Name</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.Age)</td>
+            <td>@Model.Elder.Age</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.BirthDate)</td>
+            <td>@Model.Elder.BirthDate</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.Sex)</td>
+            <td>@Model.Elder.Sex</td>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.Identity)</td>
+            <td>@Model.Elder.Identity</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.MinZu)</td>
+            <td>@Model.Elder.MinZu</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.Marital)</td>
+            <td>@Model.Elder.Marital</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.Phone)</td>
+            <td>@Model.Elder.Phone</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.JiGuan)</td>
+            <td>@Model.Elder.JiGuan</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.IDAddress)</td>
+            <td>@Model.Elder.IDAddress</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.HomeAddress)</td>
+            <td>@Model.Elder.HomeAddress</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.Faith)</td>
+            <td>@Model.Elder.Faith</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.RomNumber)</td>
+            <td>@Model.Elder.RomNumber</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.NursingGrade)</td>
+            <td>@Model.Elder.NursingGrade</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.LiveState)</td>
+            <td>@Model.Elder.LiveState</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.ExperienceStartDate)</td>
+            <td>@Model.Elder.ExperienceStartDate</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.ExperienceEndDate)</td>
+            <td>@Model.Elder.ExperienceEndDate</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.ContractTerm)</td>
+            <td>@Model.Elder.ContractTerm</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.ContractStartDate)</td>
+            <td>@Model.Elder.ContractStartDate</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.ContractEndDate)</td>
+            <td>@Model.Elder.ContractEndDate</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.PettyCash)</td>
+            <td>@Model.Elder.PettyCash</td>
+        </tr>
+        @if (Model.Elder.LiveState == ElderLiveStateEnum.已退住.ToString())@*已退住则显示退住日期*@
+        {
+            <tr>
+                <td>@Html.DisplayNameFor(M => M.Elder.LeftDate)</td>
+                <td>@Model.Elder.LeftDate</td>
+            </tr>
+        }
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Elder.Remark)</td>
+            <td><textarea type="text" asp-for="Elder.Remark" class="layui-textarea" readonly></textarea></td>
+        </tr>
+    </tbody>
+</table>
+
+<!--托养人资料-->
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>托养人资料</legend>
+</fieldset>
+
+<table class="layui-table" lay-even>
+    <colgroup>
+        <col width="100">
+        <col width="200">
+    </colgroup>
+    <tbody>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Family.Relationship)</td>
+            <td>@Model.Family.Relationship</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Family.Name)</td>
+            <td>@Model.Family.Name</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Family.Age)</td>
+            <td>@Model.Family.Age</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Family.Sex)</td>
+            <td>@Model.Family.Sex</td>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Family.Identity)</td>
+            <td>@Model.Family.Identity</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Family.Phone)</td>
+            <td>@Model.Family.Phone</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(M => M.Family.HomeAddress)</td>
+            <td>@Model.Family.HomeAddress</td>
+        </tr>
+    </tbody>
+</table>
+
+<!--跳转编辑页面-->
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        <a asp-page="Edit" asp-route-id="@Model.Elder.Id" class="layui-btn layui-btn-normal">编辑</a>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        @if (Model.Elder.LiveState == ElderLiveStateEnum.体验入住.ToString())
+        {
+            <a href="/Elder/ToContract?id=@eId&returnPage=@retPage" class="layui-btn layui-btn">转入正式入住</a>
+            <a href="/Elder/ToLeft?id=@eId&resturnPage=@retPage" class="layui-btn layui-btn">转入已退住</a>
+        }
+        @if (Model.Elder.LiveState == ElderLiveStateEnum.正式入住.ToString())
+        {
+            <a href="/Elder/ToContract?id=@eId&returnPage=@retPage" class="layui-btn layui-btn">更改合约日期</a>
+            <a href="/Elder/ToLeft?id=@eId&resturnPage=@retPage" class="layui-btn layui-btn">转入已退住</a>
+        }
+        @if (Model.Elder.LiveState == ElderLiveStateEnum.已退住.ToString())
+        {
+            <a href="/Elder/ToContract?id=@eId&returnPage=@retPage" class="layui-btn layui-btn">转入正式入住</a>
+        }
+    </div>
+</div>
+
+<!--返回 /Elder/index-->
+@if (ViewData["ReturnPage"] != null)
+{
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <a class="layui-btn layui-btn-sm" asp-page="@ViewData["ReturnPage"]">返回</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <a class="layui-btn layui-btn-sm" asp-page="Index">返回</a>
+        </div>
+    </div>
+}

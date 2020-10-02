@@ -1,0 +1,25 @@
+﻿@page
+@model AFCHIntranet.Pages.Staff.IndexDeleteModel
+@{
+}
+
+<div asp-validation-summary="All" class="layui-bg-red"></div>
+
+<!-- layui_table1 -->
+<div class="layui-row">
+    <table class="layui-hide" id="table1" lay-filter="table1"></table>
+</div>
+
+@section Scripts{
+    <!--表格行操作模板-->
+    <script type="text/html" id="caoZuoTpl">
+        <a class="layui-btn layui-btn-xs" href="/Staff/Details?id={{d.id}}">详细</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" href="/Staff/IndexDelete?handler=ToDelete&id={{d.id}}" onclick="javascript:return confirm('确定删除? 不可恢复!')">删除</a>
+    </script>
+
+    <!--layui table-->
+    <script>
+        Page_Staff_IndexDelete();
+    </script>
+
+} <!--Scripts section 结尾-->

@@ -1,0 +1,193 @@
+﻿@page
+@model AFCHIntranet.Pages.Elder.CreateNewModel
+@{
+}
+
+
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>新增体验入住老人</legend>
+</fieldset>
+
+<div asp-validation-summary="All" class="layui-bg-red"></div>
+
+<form class="layui-form" method="post" onsubmit="SubmitLoading()">
+    <!--老人资料-->
+    <fieldset class="layui-elem-field layui-field-box">
+        <legend>老人资料</legend>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Elder.ExperienceStartDate"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Elder.ExperienceStartDate" readonly class="layui-input" lay-verify="required" lay-reqtext="老人必填项" id="date1">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Elder.Name"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Elder.Name" class="layui-input" lay-verify="required" lay-reqtext="老人必填项">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Elder.Sex"></label>
+            <div class="layui-input-block">
+                <input type="radio" value="男" title="男" checked="" asp-for="Elder.Sex">
+                <input type="radio" value="女" title="女" asp-for="Elder.Sex">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Elder.Phone"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Elder.Phone" class="layui-input" lay-verify="phone" lay-reqtext="老人必填项">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Elder.Marital"></label>
+            <div class="layui-input-block">
+                <input type="radio" value="未婚" title="未婚" checked="" asp-for="Elder.Marital">
+                <input type="radio" value="已婚" title="已婚" asp-for="Elder.Marital">
+                <input type="radio" value="离异" title="离异" asp-for="Elder.Marital">
+                <input type="radio" value="丧偶" title="丧偶" asp-for="Elder.Marital">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Elder.Identity"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Elder.Identity" class="layui-input" lay-verify="identity" lay-reqtext="老人必填项">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Elder.IDAddress"></label>
+            <div class="layui-input-block">
+                <input type="text" asp-for="Elder.IDAddress" class="layui-input" lay-verify="required" lay-reqtext="老人必填项">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Elder.HomeAddress"></label>
+            <div class="layui-input-block">
+                <input type="text" asp-for="Elder.HomeAddress" class="layui-input" lay-verify="required" lay-reqtext="老人必填项">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Elder.JiGuan"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Elder.JiGuan" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Elder.MinZu"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Elder.MinZu" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Elder.Faith"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Elder.Faith" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Elder.RomNumber"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Elder.RomNumber" class="layui-input" lay-verify="required" lay-reqtext="老人必填项">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Elder.NursingGrade"></label>
+            <div class="layui-input-block">
+                <input type="radio" value="@ElderNursingGradeEnum.自理.ToString()" title="@ElderNursingGradeEnum.自理.ToString()" checked="" asp-for="Elder.NursingGrade">
+                <input type="radio" value="@ElderNursingGradeEnum.轻度护理.ToString()" title="@ElderNursingGradeEnum.轻度护理.ToString()" asp-for="Elder.NursingGrade">
+                <input type="radio" value="@ElderNursingGradeEnum.中度护理.ToString()" title="@ElderNursingGradeEnum.中度护理.ToString()" asp-for="Elder.NursingGrade">
+                <input type="radio" value="@ElderNursingGradeEnum.重度护理.ToString()" title="@ElderNursingGradeEnum.重度护理.ToString()" asp-for="Elder.NursingGrade">
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label" asp-for="Elder.Remark"></label>
+            <div class="layui-input-block">
+                <textarea type="text" asp-for="Elder.Remark" class="layui-textarea"></textarea>
+            </div>
+        </div>
+    </fieldset>
+
+    <!--托养人资料-->
+    <fieldset class="layui-elem-field layui-field-box">
+        <legend>托养人资料</legend>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Family.Name"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Family.Name" class="layui-input" lay-verify="required" lay-reqtext="托养人必填项">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Family.Sex"></label>
+            <div class="layui-input-block">
+                <input type="radio" value="男" title="男" checked="" asp-for="Family.Sex">
+                <input type="radio" value="女" title="女" asp-for="Family.Sex">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Family.Phone"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Family.Phone" class="layui-input" lay-verify="required|phone" lay-reqtext="托养人必填项">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Family.Identity"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Family.Identity" class="layui-input" lay-verify="identity" lay-reqtext="托养人必填项">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Family.Relationship"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Family.Relationship" class="layui-input" lay-verify="required" lay-reqtext="托养人必填项">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Family.HomeAddress"></label>
+            <div class="layui-input-block">
+                <input type="text" asp-for="Family.HomeAddress" class="layui-input" lay-verify="required" lay-reqtext="托养人必填项">
+            </div>
+        </div>
+    </fieldset>
+
+    <!--提交按钮-->
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button type="submit" class="layui-btn" lay-submit="">保存</button>
+            @*<button type="reset" class="layui-btn layui-btn-primary">清除</button>*@
+        </div>
+    </div>
+</form>
+
+<!-- submit loading-->
+<div class="submit_loading" style="display:none">
+    <div class="loading_show">
+        <img src="~/intranet/images/loading.gif" />
+        <p class="loading_context">正在提交，请稍后。。。</p>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        Page_Elder_CreateNew();
+    </script>
+}

@@ -1,0 +1,52 @@
+﻿@page
+@model AFCHIntranet.Pages.Elder.ToLeftModel
+@{
+    var eId = Model.Elder.Id;
+    var retPage = ViewData["ReturnPage"];
+}
+
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>转入已退住</legend>
+</fieldset>
+
+<div asp-validation-summary="All" class="layui-bg-red"></div>
+
+<form class="layui-form" method="post" onsubmit="SubmitLoading()">
+
+    <input type="hidden" asp-for="Elder.Id" />
+
+    <div class="layui-form-item">
+        <label class="layui-form-label" asp-for="Elder.LeftDate"></label>
+        <div class="layui-input-inline">
+            <input type="text" asp-for="Elder.LeftDate" readonly class="layui-input" lay-verify="required" lay-reqtext="退住日期" id="date1">
+        </div>
+    </div>
+
+    <!--提交按钮-->
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button type="submit" class="layui-btn" lay-submit="">保存</button>
+        </div>
+    </div>
+</form>
+
+<!--返回-->
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        <a class="layui-btn layui-btn-sm" href="/Elder/Details?id=@eId&returnPage=@retPage">返回</a>
+    </div>
+</div>
+
+<!-- submit loading-->
+<div class="submit_loading" style="display:none">
+    <div class="loading_show">
+        <img src="~/intranet/images/loading.gif" />
+        <p class="loading_context">正在提交，请稍后。。。</p>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        Page_Elder_ToLeft();
+    </script>
+}

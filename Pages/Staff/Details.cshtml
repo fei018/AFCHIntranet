@@ -1,0 +1,126 @@
+﻿@page
+@model AFCHIntranet.Pages.Staff.DetailsModel
+@{
+    var staff = Model.Staff;
+}
+
+<!--员工资料-->
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>员工资料</legend>
+</fieldset>
+
+<div asp-validation-summary="All" class="layui-bg-red"></div>
+
+<table class="layui-table" lay-even>
+    <colgroup>
+        <col width="100">
+        <col width="200">
+    </colgroup>
+    <tbody>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.Name)</td>
+            <td>@staff.Name</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.Sex)</td>
+            <td>@staff.Sex</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.Phone)</td>
+            <td>@staff.Phone</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.Age)</td>
+            <td>@staff.Age</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.BirthDate)</td>
+            <td>@staff.BirthDate</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.Identity)</td>
+            <td>@staff.Identity</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.Marital)</td>
+            <td>@staff.Marital</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.JiGuan)</td>
+            <td>@staff.JiGuan</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.MinZu)</td>
+            <td>@staff.MinZu</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.Education)</td>
+            <td>@staff.Education</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.IDAddress)</td>
+            <td>@staff.IDAddress</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.HomeAddress)</td>
+            <td>@staff.HomeAddress</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.Skill)</td>
+            <td>@staff.Skill</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.WorkStartDate)</td>
+            <td>@staff.WorkStartDate</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.WorkingAge)</td>
+            <td>@staff.WorkingAge</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.PositionState)</td>
+            <td>@staff.PositionState</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.RomNumber)</td>
+            <td>@staff.RomNumber</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.ContractStartDate)</td>
+            <td>@staff.ContractStartDate</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.ContractTerm)</td>
+            <td>@staff.ContractTerm</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.ContractEndDate)</td>
+            <td>@staff.ContractEndDate</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.Department)</td>
+            <td>@staff.Department</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.FamilyName)</td>
+            <td>@staff.FamilyName</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.Staff.FamilyPhone)</td>
+            <td>@staff.FamilyPhone</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        <a class="layui-btn layui-btn-normal" asp-page="Edit" asp-route-id="@staff.Id">编辑</a>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        <a class="layui-btn layui-btn-sm" asp-page="Index">返回</a>
+    </div>
+</div>

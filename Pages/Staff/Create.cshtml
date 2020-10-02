@@ -1,0 +1,179 @@
+﻿@page
+@model AFCHIntranet.Pages.Staff.CreateModel
+@{
+}
+
+
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>新增员工</legend>
+</fieldset>
+
+<div asp-validation-summary="All" class="layui-bg-red"></div>
+
+<form class="layui-form" method="post" onsubmit="SubmitLoading()">
+    <!--资料-->
+    <fieldset class="layui-elem-field layui-field-box">
+        <legend>员工资料</legend>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.WorkStartDate"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Staff.WorkStartDate" readonly class="layui-input" lay-verify="required" lay-reqtext="必填项" id="date1">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.PositionState"></label>
+            <div class="layui-input-block">
+                <input type="radio" value="@StaffPositionStateEnum.试用.ToString()" title="@StaffPositionStateEnum.试用.ToString()" asp-for="Staff.PositionState" checked>
+                <input type="radio" value="@StaffPositionStateEnum.短期.ToString()" title="@StaffPositionStateEnum.短期.ToString()" asp-for="Staff.PositionState">
+                <input type="radio" value="@StaffPositionStateEnum.长期.ToString()" title="@StaffPositionStateEnum.长期.ToString()" asp-for="Staff.PositionState">
+                <input type="radio" value="@StaffPositionStateEnum.离职.ToString()" title="@StaffPositionStateEnum.离职.ToString()" asp-for="Staff.PositionState">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.Department"></label>
+            <div class="layui-input-inline">
+                <select asp-for="Staff.Department">
+                    <option value="@StaffDepartmentEnum.办公室.ToString()" selected>@StaffDepartmentEnum.办公室.ToString()</option>
+                    <option value="@StaffDepartmentEnum.后勤部.ToString()">@StaffDepartmentEnum.后勤部.ToString()</option>
+                    <option value="@StaffDepartmentEnum.护理部.ToString()">@StaffDepartmentEnum.护理部.ToString()</option>
+                    <option value="@StaffDepartmentEnum.膳食部.ToString()">@StaffDepartmentEnum.膳食部.ToString()</option>
+                    <option value="@StaffDepartmentEnum.医疗部.ToString()">@StaffDepartmentEnum.医疗部.ToString()</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.Name"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Staff.Name" class="layui-input" lay-verify="required" lay-reqtext="必填项">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.Sex"></label>
+            <div class="layui-input-block">
+                <input type="radio" value="男" title="男" checked="" asp-for="Staff.Sex">
+                <input type="radio" value="女" title="女" asp-for="Staff.Sex">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.Phone"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Staff.Phone" class="layui-input" lay-verify="phone" lay-reqtext="必填项">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.Marital"></label>
+            <div class="layui-input-block">
+                <input type="radio" value="未婚" title="未婚" checked="" asp-for="Staff.Marital">
+                <input type="radio" value="已婚" title="已婚" asp-for="Staff.Marital">
+                <input type="radio" value="离异" title="离异" asp-for="Staff.Marital">
+                <input type="radio" value="丧偶" title="丧偶" asp-for="Staff.Marital">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.Identity"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Staff.Identity" class="layui-input" lay-verify="identity" lay-reqtext="必填项">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.IDAddress"></label>
+            <div class="layui-input-block">
+                <input type="text" asp-for="Staff.IDAddress" class="layui-input" lay-verify="required" lay-reqtext="必填项">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.HomeAddress"></label>
+            <div class="layui-input-block">
+                <input type="text" asp-for="Staff.HomeAddress" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.JiGuan"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Staff.JiGuan" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.MinZu"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Staff.MinZu" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.Education"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Staff.Education" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.Skill"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Staff.Skill" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.RomNumber"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Staff.RomNumber" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label" asp-for="Staff.Remark"></label>
+            <div class="layui-input-block">
+                <textarea type="text" asp-for="Staff.Remark" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <!--紧急联系人-->
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.FamilyName"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Staff.FamilyName" class="layui-input" lay-verify="required" lay-reqtext="必填项">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" asp-for="Staff.FamilyPhone"></label>
+            <div class="layui-input-inline">
+                <input type="text" asp-for="Staff.FamilyPhone" class="layui-input" lay-verify="required" lay-reqtext="必填项">
+            </div>
+        </div>
+    </fieldset>
+
+    <!--提交按钮-->
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button type="submit" class="layui-btn" lay-submit="">保存</button>
+        </div>
+    </div>
+</form>
+
+<!-- submit loading-->
+<div class="submit_loading" style="display:none">
+    <div class="loading_show">
+        <img src="~/intranet/images/loading.gif" />
+        <p class="loading_context">正在提交，请稍后。。。</p>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        Page_Staff_Create();
+    </script>
+}

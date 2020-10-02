@@ -1,0 +1,68 @@
+﻿@page
+@model AFCHIntranet.Pages.Staff.IndexModel
+@{
+}
+
+<!--分类显示-->
+<div class="layui-form-item">
+    <label class="layui-form-label">分类显示</label>
+    <div class="layui-input-block">
+        <div class="layui-btn-group">
+            <button class="layui-btn layui-btn-sm" onclick="Staff_WorkingList('Index')">在职</button>
+            <button class="layui-btn layui-btn-sm" onclick="Staff_ProbationList('Index')">试用期</button>
+            <button class="layui-btn layui-btn-sm" onclick="Staff_ShortTermList('Index')">短期</button>
+            <button class="layui-btn layui-btn-sm" onclick="Staff_ContractList('Index')">长期</button>
+            <button class="layui-btn layui-btn-sm" onclick="Staff_LeftList('Index')">离职</button>
+        </div>
+    </div>
+    <div class="layui-input-block">
+        <div class="layui-btn-group">
+            <button class="layui-btn layui-btn-sm" onclick="Staff_ProbationList_Expire('Index')">试用到期</button>
+            <button class="layui-btn layui-btn-sm" onclick="Staff_ContractList_Expire('Index')">合约到期</button>
+        </div>
+    </div>
+</div>
+
+<!--搜索-->
+<div class="anfu-inline-search">
+    <label class="layui-form-label anfu-label-search">生日月份</label>
+    <input type="number" class="layui-input anfu-input-search" id="birthMonthInput" name="BirthMonth" />
+    <button class="layui-btn layui-btn-primary anfu-btn-search" onclick="Staff_SearchBirthMonthListJson('Index')">
+        <i class="layui-icon layui-icon-search"></i>
+    </button>
+</div>
+
+<div class="anfu-inline-search">
+    <label class="layui-form-label anfu-label-search">户籍地区</label>
+    <input type="text" class="layui-input anfu-input-search" id="idAddressInput" name="IDAddress" />
+    <button class="layui-btn layui-btn-primary anfu-btn-search" onclick="Staff_SearchIDAddressListJson('Index')">
+        <i class="layui-icon layui-icon-search"></i>
+    </button>
+</div>
+
+<div class="anfu-inline-search">
+    <label class="layui-form-label anfu-label-search"></label>
+    <button class="layui-btn layui-btn-primary" onclick="ClearAllInput()">
+        清除
+    </button>
+</div>
+
+<div asp-validation-summary="All" class="layui-bg-red"></div>
+
+<!-- layui_table1 -->
+<div class="layui-row">
+    <table class="layui-hide" id="table1" lay-filter="table1"></table>
+</div>
+
+@section Scripts{
+    <!--表格行操作模板-->
+    <script type="text/html" id="caoZuoTpl">
+        <a class="layui-btn layui-btn-xs" href="/Staff/Details?id={{d.id}}">详细</a>
+    </script>
+
+    <!--layui table-->
+    <script>
+        Page_Staff_Index();
+    </script>
+
+} <!--Scripts section 结尾-->

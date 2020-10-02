@@ -1,0 +1,35 @@
+﻿@page
+@model AFCHIntranet.Pages.Elder.IndexLeftModel
+@{
+}
+
+<!--姓名搜索查询-->
+<div class="layui-form-item">
+    <label class="layui-form-label">姓名</label>
+    <div class="layui-input-inline">
+        <input type="text" class="layui-input" id="nameInput" name="elderName" />
+    </div>
+    <div class="layui-input-inline">
+        <button class="layui-btn layui-btn-primary" onclick="Elder_SearchNameListJson('IndexLeft')">搜索</button>
+    </div>
+</div>
+
+<div asp-validation-summary="All" class="layui-bg-red"></div>
+
+<!-- layui_table1 -->
+<div class="layui-row">
+    <table class="layui-hide" id="table1" lay-filter="table1"></table>
+</div>
+
+@section Scripts{
+    <!--表格行操作模板-->
+    <script type="text/html" id="caoZuoTpl">
+        <a class="layui-btn layui-btn-xs" href="/Elder/Details?id={{d.id}}&returnPage=IndexLeft">详细</a>
+    </script>
+
+    <!--layui table-->
+    <script>
+        Page_Elder_IndexLeft();
+    </script>
+
+} <!--Scripts section 结尾-->

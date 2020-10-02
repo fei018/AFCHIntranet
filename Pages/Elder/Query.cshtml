@@ -1,0 +1,63 @@
+﻿@page
+@model AFCHIntranet.Pages.Elder.QueryModel
+@{
+}
+
+<!--查询条件-->
+<fieldset class="layui-elem-field layui-field-box">
+    <legend>查询条件</legend>
+
+    <div class="anfu-inline-search">
+        <label class="layui-form-label anfu-label-search">姓名</label>
+        <input type="text" class="layui-input anfu-input-search" id="nameInput" name="elderName" />
+        <button class="layui-btn layui-btn-primary anfu-btn-search" onclick="Elder_SearchNameListJson('Query')" >
+            <i class="layui-icon layui-icon-search"></i>
+        </button>
+    </div>
+
+    <div class="anfu-inline-search">
+        <label class="layui-form-label anfu-label-search">年龄</label>
+        <input type="number" class="layui-input anfu-input-search" id="ageInput" name="Age" />
+        <button class="layui-btn layui-btn-primary anfu-btn-search" onclick="Elder_SearchAgeListJson('Query')">
+            <i class="layui-icon layui-icon-search"></i>
+        </button>
+    </div>
+
+    <div class="anfu-inline-search">
+        <label class="layui-form-label anfu-label-search">生日月份</label>
+        <input type="number" class="layui-input anfu-input-search" id="birthMonthInput" name="BirthMonth" />
+        <button class="layui-btn layui-btn-primary anfu-btn-search" onclick="Elder_SearchBirthMonthListJson('Query')">
+            <i class="layui-icon layui-icon-search"></i>
+        </button>
+    </div>
+
+    <div class="anfu-inline-search">
+        <label class="layui-form-label anfu-label-search">户籍地区</label>
+        <input type="text" class="layui-input anfu-input-search" id="idAddressInput" name="IDAddress" />
+        <button class="layui-btn layui-btn-primary anfu-btn-search" onclick="Elder_SearchIDAddressListJson('Query')">
+            <i class="layui-icon layui-icon-search"></i>
+        </button>
+    </div>
+
+    <div class="anfu-inline-search" style="display:block">
+        <label class="layui-form-label anfu-label-search"></label>
+        <button class="layui-btn layui-btn-primary" onclick="ClearAllInput()">
+            清除
+        </button>
+    </div>
+</fieldset>
+
+<div asp-validation-summary="All" class="layui-bg-red"></div>
+
+<!-- layui_table1 -->
+<div class="layui-row">
+    <table class="layui-hide" id="table1" lay-filter="table1"></table>
+</div>
+
+@section Scripts{
+    <!--表格行操作模板-->
+    <script type="text/html" id="caoZuoTpl">
+        <a class="layui-btn layui-btn-xs" href="/Elder/Details?id={{d.id}}">详细</a>
+    </script>
+
+} <!--Scripts section 结尾-->
